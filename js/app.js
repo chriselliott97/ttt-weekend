@@ -7,7 +7,7 @@ let board, turn, winner
 
 
 /*------------------------ Cached Element References ------------------------*/
-const squareEls = document.querySelectorAll('div')
+const squareEls = document.querySelector('.board')
 const messageEl = document.querySelector('#message')
 const winningCombos = [
   [0, 1, 2],
@@ -30,7 +30,14 @@ const winningCombos = [
 init()
 
 function render() {
-
+    board.forEach((cell, idx) => {
+      if (cell === 1) {
+          squareEls.children[idx].innerText = 'x'
+      }
+      if (cell === -1) {
+          squareEls.children[idx].innerText = 'o'
+      }
+  })
 }
 
 
