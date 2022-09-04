@@ -7,7 +7,7 @@ let board, turn, winner
 
 
 /*------------------------ Cached Element References ------------------------*/
-const squareEls = document.querySelector('.board')
+const squareEls = document.querySelectorAll('div')
 const messageEl = document.querySelector('#message')
 const winningCombos = [
   [0, 1, 2],
@@ -23,22 +23,31 @@ const winningCombos = [
 // console.log(squareEls)
 /*----------------------------- Event Listeners -----------------------------*/
 
-squareEls.forEach(function)
+squareEls.forEach(function(square){square.addEventListener("click", handleClick)})
+
 
 /*-------------------------------- Functions --------------------------------*/
 
 init()
 
+function init() {
+  board = [null, null, null, null, null, null, null, null, null]
+  turn = 1
+  winner = null
+  
+  render()
+}
+
 function render() {
     board.forEach((sqr, idx) => {
       if (sqr === 1) {
-          squareEls.children[idx].innerText = 'x'
+          squareEls[idx].innerText = 'x'
       }
       if (sqr === -1) {
-          squareEls.children[idx].innerText = 'o'
+          squareEls[idx].innerText = 'o'
       }
       else {
-        squareEls.children[idx].innerText = ''
+        squareEls[idx].innerText = ''
     }
   })
   if (winner === null) {
@@ -49,16 +58,19 @@ function render() {
 }
 
 function handleClick(evt){
-
-}
-
-function init() {
-  board = [null, null, null, null, null, null, null, null, null]
-  turn = 1
-  winner = null
+  if(board[+(evt.target.id.replace("sq",''))] !== null){
+		return
+	} else if(winner !== null){
+		return
+	} else {
+		board[+(evt.target.id.replace("sq",''))] = turn
+	}
+	turn *= -1
   
   render()
 }
+
+
 
 // Step 1 - Define the required variables used to track the state of the game
 
