@@ -19,27 +19,38 @@ const winningCombos = [
   [3, 4, 5],
   [6, 7, 8]
 ]
-// console.log(typeof squareEls)
+
 // console.log(squareEls)
 /*----------------------------- Event Listeners -----------------------------*/
 
-
+squareEls.forEach(function)
 
 /*-------------------------------- Functions --------------------------------*/
 
 init()
 
 function render() {
-    board.forEach((cell, idx) => {
-      if (cell === 1) {
+    board.forEach((sqr, idx) => {
+      if (sqr === 1) {
           squareEls.children[idx].innerText = 'x'
       }
-      if (cell === -1) {
+      if (sqr === -1) {
           squareEls.children[idx].innerText = 'o'
       }
+      else {
+        squareEls.children[idx].innerText = ''
+    }
   })
+  if (winner === null) {
+    messageEl.textContent = `It is ${turn === 1 ? "X's turn!" : "O's turn!"}`
+  } else (winner === winningCombos); {
+    messageEl.textContent = `${winner === 'T' ? "It's a tie! Play again!" : "Congrats! You won!"}`
+  }
 }
 
+function handleClick(evt){
+
+}
 
 function init() {
   board = [null, null, null, null, null, null, null, null, null]
