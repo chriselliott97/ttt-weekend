@@ -58,6 +58,7 @@ function render() {
   } else {
     messageEl.textContent = `${winner === 'T' ? "It's a tie! Play again!" : "Congrats! You won!"}`
     resetBtnEl.removeAttribute('hidden')
+    confetti.start(3000)
   }
 }
 

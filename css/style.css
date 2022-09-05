@@ -22,3 +22,12 @@ div {
   text-align: center;
   vertical-align: middle;
 }
+
+#reset {
+  width: 69px;
+  height: 30px;
+  background-color: lightblue;
+  border-radius: 60%;
+  border-style: ridge;
+  box-shadow:
+}
