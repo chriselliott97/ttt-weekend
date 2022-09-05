@@ -1,14 +1,4 @@
 /*-------------------------------- Constants --------------------------------*/
-
-
-
-/*---------------------------- Variables (state) ----------------------------*/
-let board, turn, winner
-
-
-/*------------------------ Cached Element References ------------------------*/
-const squareEls = document.querySelectorAll('div')
-const messageEl = document.querySelector('#message')
 const winningCombos = [
   [0, 1, 2],
   [0, 4, 8],
@@ -20,12 +10,24 @@ const winningCombos = [
   [6, 7, 8]
 ]
 
+
+/*---------------------------- Variables (state) ----------------------------*/
+let board, turn, winner
+
+
+/*------------------------ Cached Element References ------------------------*/
+const squareEls = document.querySelectorAll('div')
+const messageEl = document.querySelector('#message')
+const resetBtnEl = document.querySelector('button')
+
+
+
 // console.log(squareEls)
 /*----------------------------- Event Listeners -----------------------------*/
 
 squareEls.forEach(function(square){square.addEventListener("click", handleClick)})
 
-resetButton.addEventListener('click', resetGame)
+resetBtnEl.addEventListener('click', resetGame)
 /*-------------------------------- Functions --------------------------------*/
 
 init()
@@ -55,16 +57,17 @@ function render() {
     messageEl.textContent = `It is ${turn === 1 ? "X's turn!" : "O's turn!"}`
   } else {
     messageEl.textContent = `${winner === 'T' ? "It's a tie! Play again!" : "Congrats! You won!"}`
+    resetBtnEl.removeAttribute('hidden')
   }
 }
 
 function handleClick(evt){
-  if(board[+(evt.target.id.replace("sq",''))] !== null){
+  if(board[(evt.target.id.replace("sq",''))] !== null){
 		return
 	} else if(winner !== null){
 		return
 	} else {
-		board[+(evt.target.id.replace("sq",''))] = turn
+		board[(evt.target.id.replace("sq",''))] = turn
 	}
 	turn *= -1
   
@@ -81,7 +84,10 @@ function getWinner() {
   })
 }
 
-
+function resetGame() {
+  init()
+  resetBtnEl.hidden = true
+}
 
 // Step 1 - Define the required variables used to track the state of the game
 
