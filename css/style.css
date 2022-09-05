@@ -7,6 +7,8 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 section.board {
@@ -14,20 +16,19 @@ section.board {
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
   grid-gap: 0vmin;
+  margin: 30px
 }
 
 div {
-  border: 3px solid black;
+  border: 2px solid black;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
+  align-content: center;
 }
 
 #reset {
   width: 69px;
-  height: 30px;
-  background-color: lightblue;
-  border-radius: 60%;
-  border-style: ridge;
-  box-shadow:
+  text-align: center;
+  padding-bottom: 8px;
 }
