@@ -25,7 +25,7 @@ const winningCombos = [
 
 squareEls.forEach(function(square){square.addEventListener("click", handleClick)})
 
-
+resetButton.addEventListener('click', resetGame)
 /*-------------------------------- Functions --------------------------------*/
 
 init()
@@ -39,20 +39,21 @@ function init() {
 }
 
 function render() {
+  getWinner()
     board.forEach((sqr, idx) => {
       if (sqr === 1) {
-          squareEls[idx].innerText = 'x'
+          squareEls[idx].textContent = 'X'
       }
-      if (sqr === -1) {
-          squareEls[idx].innerText = 'o'
+      else if (sqr === -1) {
+          squareEls[idx].textContent = 'O'
       }
       else {
-        squareEls[idx].innerText = ''
+        squareEls[idx].textContent = ''
     }
   })
   if (winner === null) {
     messageEl.textContent = `It is ${turn === 1 ? "X's turn!" : "O's turn!"}`
-  } else (winner === winningCombos); {
+  } else {
     messageEl.textContent = `${winner === 'T' ? "It's a tie! Play again!" : "Congrats! You won!"}`
   }
 }
@@ -68,6 +69,16 @@ function handleClick(evt){
 	turn *= -1
   
   render()
+}
+
+function getWinner() {
+  winningCombos.forEach(function(combo){
+    if (Math.abs(board[combo[0]] + board[combo[1]] + board[combo[2]]) === 3){
+			winner = turn
+		}else if(!board.includes(null)){
+			winner = 'T'
+		}
+  })
 }
 
 
