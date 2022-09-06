@@ -53,6 +53,7 @@ function render() {
       }
       else {
         squareEls[idx].textContent = ''
+        squareEls[idx].style.backgroundColor = ''
     }
   })
   if (winner === null) {
