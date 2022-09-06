@@ -58,8 +58,11 @@ function render() {
   })
   if (winner === null) {
     messageEl.textContent = `It is ${turn === 1 ? "X's turn!" : "O's turn!"}`
+  } else if (winner === 'T') {
+    messageEl.textContent = "It's a tie! Play again!" 
+    resetBtnEl.removeAttribute('hidden')
   } else {
-    messageEl.textContent = `${winner === 'T' ? "It's a tie! Play again!" : "Congrats! You won!"}`
+    messageEl.textContent = `Congrats! ${winner === -1 ? 'X' : 'O'} won!`
     resetBtnEl.removeAttribute('hidden')
     confetti.start(3000)
   }
