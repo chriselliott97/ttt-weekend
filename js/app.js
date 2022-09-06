@@ -16,7 +16,7 @@ let board, turn, winner
 
 
 /*------------------------ Cached Element References ------------------------*/
-const squareEls = document.querySelectorAll('div')
+const squareEls = document.querySelectorAll('section > div')
 const messageEl = document.querySelector('#message')
 const resetBtnEl = document.querySelector('button')
 
@@ -44,10 +44,12 @@ function render() {
   getWinner()
     board.forEach((sqr, idx) => {
       if (sqr === 1) {
-          squareEls[idx].textContent = 'X'
+        squareEls[idx].textContent = 'X'
+        squareEls[idx].style.backgroundColor = 'yellow'
       }
       else if (sqr === -1) {
-          squareEls[idx].textContent = 'O'
+        squareEls[idx].textContent = 'O'
+        squareEls[idx].style.backgroundColor = 'lightgray'
       }
       else {
         squareEls[idx].textContent = ''
